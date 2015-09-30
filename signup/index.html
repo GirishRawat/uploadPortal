@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+      <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel='stylesheet prefetch' href='http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css'>
+
+        <link rel="stylesheet" href="css/style.css">
+
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+  <script type="text/javascript">
+  //paste this code under head tag or in a seperate js file.
+  // Wait for window load
+  $(window).load(function() {
+    // Animate loader off screen
+    $(".se-pre-con").fadeOut("slow");;
+  });
+</script>
+  </head>
+
+  <body>
+
+      <div class="wrapper">
+    <form class="form-signin" id="theForm" onsubmit="start();">       
+      <h2 class="form-signin-heading">Sign Up</h2>
+      <h4>Let's get to know you.</h4>
+      <input type="text" class="form-control" name="username" id="username" placeholder="Email Address" required="" autofocus="" />
+      <input type="resgistration" class="form-control" name="registration" id="registration" placeholder="Registration Number" required=""/> 
+      <input type="resgistration" class="form-control" name="mobile" id="mobile" placeholder="Mobile Number" required=""/> 
+      <input type="password" class="form-control" name="password" id="password" placeholder="Choose a Password" required=""/> 
+      <input type="password" class="form-control" name="password2" id="password2" placeholder="Confirm Password" required=""/>      
+      <button class="btn btn-lg btn-success btn-block" type="submit">Confirm</button>  
+    </form>
+
+
+  </div>
+    
+    <script type="text/javascript">
+
+      var theForm = document.getElementById( 'theForm' );
+
+      function start() {
+          var q1 = document.getElementById('username').value;
+          var q2 = document.getElementById('registration').value;
+          var q3 = document.getElementById('mobile').value;
+          var q4 = document.getElementById('password').value;
+          var q5 = document.getElementById('password2').value;
+
+          
+          event.preventDefault();
+          var myDataRef = new Firebase('aimcseusers.firebaseio.com');
+
+          function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
+}
+
+          if(q4==q5) {
+            myDataRef.push({Email: q1, Registration: q2, Mobile: q3, Password:q4});
+            function fade(element) {
+    var op = 1;  // initial opacity
+    var timer = setInterval(function () {
+        if (op <= 0.1){
+            clearInterval(timer);
+            element.style.display = 'none';
+        }
+        element.style.opacity = op;
+        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+        op -= op * 0.1;
+    }, 50);
+}
+            fade(theForm);
+            redirect();
+
+    $('#loading_image').show(); // show animation
+
+
+          } else {
+            alert('Passwords do not match. Be careful homie!');
+          }
+
+      }
+
+    </script>
+    
+      <script type="text/javascript">
+    //<![CDATA[
+      $(window).load(function() { // makes sure the whole site is loaded
+        $('#status').fadeOut(); // will first fade out the loading animation
+        $('#preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website.
+        $('body').delay(350).css({'overflow':'visible'});
+      })
+    //]]>
+  </script>
+  </body>
+    <div class="se-pre-con"></div>
+</html>
