@@ -2,12 +2,11 @@
 
 $target_dir = "uploads/";
 
+
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 
-$connection = mysql_connect("localhost", "root", "piedpiper") or die("Couldn't connect to the server.");
-mysql_select_db("aimcse", $connection) or die("Couldn't connect to the database.");
 
 
 // Check if file already exists
