@@ -31,12 +31,9 @@
       <div class="wrapper">
     <form class="form-signin" id="theForm" action="upload.php" method="post" enctype="multipart/form-data" onsubmit="start();">       
       <h2 class="form-signin-heading">Add Questions</h2>
-      <input type="question" class="form-control" name="username" id="question" placeholder="Question" required="" autofocus="" />
-      <input type="" class="form-control" name="option1" id="option1" placeholder="Option 1" required=""/>  
-      <input type="password1" class="form-control" id="option2" name="option2" placeholder="Option 2" required=""/>  
-      <input type="password1" class="form-control" id="option3" name="option3" placeholder="Option 3" required=""/>  
-      <input type="option4" class="form-control" id="option4" name="option4" placeholder="Option 4" required=""/>      
-      <input type="number" class="form-control" id="answer" name="quantity" placeholder="Right Answer" min="1" max="4">
+      <input type="number" class="form-control" id="question_no" placeholder="Question Number" required="" autofocus="" min="1" />
+      <input type="question" class="form-control" id="question" placeholder="Question" required="" autofocus="" />
+      <input type="" class="form-control" name="option1" id="option1" placeholder="Answer" required=""/>  
       <input type="file" class="form-control" name="fileToUpload" id="fileToUpload">
       <button class="btn btn-lg btn-success btn-block" type="submit">Add me</button>  
     </form>
@@ -47,15 +44,15 @@
   var theForm = document.getElementById( 'theForm' );
 
   function start() {
-          var q1 = document.getElementById('question').value;
-          var q2 = document.getElementById('option1').value;
-          var q3 = document.getElementById('option2').value;
-          var q4 = document.getElementById('option3').value;
-          var q5 = document.getElementById('option4').value;
-          var q6 = document.getElementById('answer').value;
+          var q1 = document.getElementById('question_no').value;
+          var q2 = document.getElementById('question').value;
+          var q3 = document.getElementById('answer').value;
+          var fullPath = document.getElementById('fileToUpload').value;
+          var filename = fullPath.replace(/^.*[\\\/]/, '');
+
           event.preventDefault();
 
-          myDataRef.push({Question: q1, O1: q2, O2: q3, O3:q4, O4:q5, answer:q6});
+          myDataRef.push({Question_No:q1, Question:q2, Answer:q3, Filename: filename});
   }
 </script>
 

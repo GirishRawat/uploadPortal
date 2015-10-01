@@ -93,6 +93,11 @@ font-family: 'Montserrat', sans-serif;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
+.form-signin input[type="question_no"] {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
 .form-signin input[type="question"] {
   margin-bottom: 20px;
   border-top-left-radius: 0;
@@ -106,7 +111,6 @@ font-family: 'Montserrat', sans-serif;
 }
 
 .form-signin input[type="number"] {
-  margin-bottom: 20px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
